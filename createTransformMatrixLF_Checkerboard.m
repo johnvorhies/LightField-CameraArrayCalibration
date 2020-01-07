@@ -1,12 +1,9 @@
-function [tforms] = createTransformMatrixLF_Checkerboard(calibrationSetDir)    
-    images = imageSet(calibrationSetDir);
+function [tforms] = createTransformMatrixLF_Checkerboard(checkerboardDir)    
+    images = imageSet(checkerboardDir);
     centerIndex = ceil(images.Count/2);
-    sizeLF = sqrt(images.Count);
-    calibrationImagesPath = images.ImageLocation;
+    checkerboardImagesPath = images.ImageLocation;
     
-    tic
-    
-    [imagePoints, ~] = detectCheckerboardPoints(calibrationImagesPath);
+    [imagePoints, ~] = detectCheckerboardPoints(checkerboardImagesPath);
     I = read(images,centerIndex);
     centerGrayImage = rgb2gray(I);
     
@@ -28,6 +25,5 @@ function [tforms] = createTransformMatrixLF_Checkerboard(calibrationSetDir)
     
         %showMatchedFeatures(centerGrayImage,grayImage,inlierPointsCenter,inlierPointsCurrent)
     end
-    toc
     
 end

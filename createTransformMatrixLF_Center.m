@@ -1,18 +1,15 @@
-function [tforms] = createTransformMatrixLF_Center(calibrationSetDir,cameraParams)    
-    images = imageSet(calibrationSetDir);
+function [tforms] = createTransformMatrixLF_Center(originalDir)    
+    images = imageSet(originalDir);
     centerIndex = ceil(images.Count/2);
-    sizeLF = sqrt(images.Count);
     
     % Detect features of central image
     I = read(images,centerIndex);
-    I = undistortImage(I,cameraParams);
     centerGrayImage = rgb2gray(I);
     centerPoints = detectSURFFeatures(centerGrayImage);
     [centerFeatures, centerPoints] = extractFeatures(centerGrayImage, centerPoints);
     
     tforms(images.Count) = projective2d(eye(3));
     
-    tic
     % Compute transforms with respect to the central image
     for n = 1:images.Count
         if n == centerIndex
@@ -36,6 +33,5 @@ function [tforms] = createTransformMatrixLF_Center(calibrationSetDir,cameraParam
     
         %showMatchedFeatures(centerGrayImage,grayImage,inlierPointsCenter,inlierPointsCurrent)
     end
-    toc
     
 end
