@@ -4,7 +4,8 @@ Tools for calibrating a high-density array of cameras for light field imaging. S
 ## Usage
 A calibration pipeline using these functions should follow this:
 
-**createTransformMatrixLF_Center/Checkerboard**->**rectifyImagesViaTransforms**->**cropRectified**->**image2stuv**->**analyzeEPI**
+**createTransformMatrixLF_Center/Checkerboard**->**rectifyImagesViaTransforms**->**cropRectified**->**image2stuv**
+->**analyzeEPI**
 
 ## Functions
 
