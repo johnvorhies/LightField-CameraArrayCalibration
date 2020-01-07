@@ -1,6 +1,10 @@
 # LightField-CameraArrayCalibration
 Tools for calibrating a high-density array of cameras for light field imaging. Some of this code is an adaptation of [Ashley Stewart's Planar-LF-Calibration](https://github.com/astewartau/Planar-LF-Calibration).
 
+## Usage
+A calibration pipeline using these functions should follow this:
+**createTransformMatrixLF_Center/Checkerboard**->**rectifyImagesViaTransforms**->**cropRectified**->**image2stuv**->**analyzeEPI**
+
 ## Functions
 
 ### analyzeEPI(st_uv)
